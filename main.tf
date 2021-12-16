@@ -18,17 +18,17 @@ resource "null_resource" "local-exec" {
 #     command = "sleep 15"
 #   }
 # }
-# resource "null_resource" "local-exe4" {
-#   provisioner "local-exec" {
-#     command = "sleep 40"
-#   }
-# }
-resource "null_resource" "sleep" {
-  triggers = {
-    uuid = uuid()
-  }
-
-  provisioner "safe-local-exec" {
-    command = "sleep ${var.sleepy_time}"
+resource "null_resource" "local-exe4" {
+  provisioner "local-exec" {
+    command = "sleep 40"
   }
 }
+# resource "null_resource" "sleep" {
+#   triggers = {
+#     uuid = uuid()
+#   }
+
+#   provisioner "safe-local-exec" {
+#     command = "sleep ${var.sleepy_time}"
+#   }
+# }
