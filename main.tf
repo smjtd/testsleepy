@@ -4,7 +4,7 @@ resource "null_resource" "local-exec" {
   }
 }
 # resource "null_resource" "local-exec1" {
-#   provisioner "local-exec" {
+#   provisioner "local-exe  c" {
 #     command = "sleep 5"
 #   }
 # }
