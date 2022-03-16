@@ -19,8 +19,6 @@ jobs:
         go-version: ^1.16
       id: go
 
-    - name: Build
-      run: go build -v .
 
     - name: fmt Check
       run: scripts/gofmtcheck.sh
