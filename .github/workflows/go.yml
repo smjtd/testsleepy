@@ -19,9 +19,19 @@ jobs:
         go-version: ^1.16
       id: go
 
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v2
 
     - name: fmt Check
-      run: scripts/gofmtcheck.sh
+      run: |
+        echo "==> Checking that code complies with gofmt requirements..."
+        gofmt_files=$(gofmt -l `find . -path ./.direnv -prune -false -o -name '*.go' | grep -v vendor`)
+        if [[ -n ${gofmt_files} ]]; then
+            echo 'gofmt needs running on the following files:'
+            echo "${gofmt_files}"
+            echo "You can use the command: \`make fmt\` to reformat code."
+            exit 1
+        fi
 
     - name: Detect-Secrets
       run: scripts/detect_secrets.sh
